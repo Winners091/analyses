@@ -480,24 +480,83 @@ header p {
             margin-top: 2.5rem; /* 40px */
         }
         
-        /* Bouton retour en haut */
+        /* Bouton retour en haut amélioré */
         .back-to-top {
             text-align: right;
-            margin-top: 1.875rem; /* 30px */
+            margin-top: var(--spacing-xl);
         }
         
         .back-to-top a {
-            color: var(--accent-color);
+            color: var(--primary-color);
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-size: 0.95rem;
+            font-weight: 600;
             display: inline-flex;
             align-items: center;
             gap: 5px;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--border-radius);
+            transition: all var(--transition-speed) var(--transition-ease);
+            background-color: rgba(142,68,173,0.05);
         }
         
         .back-to-top a:hover {
-            color: var(--primary-color);
+            color: var(--light-text);
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .back-to-top a::before {
+            content: '↑';
+            font-size: 1.2em;
+            font-weight: 400;
+        }
+
+                /* Bouton flottant de retour en haut pour mobile */
+        .floating-back-to-top {
+            position: fixed;
+            bottom: var(--spacing-lg);
+            right: var(--spacing-lg);
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-speed) var(--transition-ease);
+            z-index: 998;
+        }
+        
+        .floating-back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .floating-back-to-top:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Loading Spinner */
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(142,68,173,0.2);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+            margin: var(--spacing-xl) auto;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
         
         /* Media queries pour une meilleure responsivité */
@@ -568,7 +627,7 @@ header p {
         <div class="container">
             <img src="Design_sans_titre-removebg-previ.png">
             <h1>Recueil d'analyses littéraires</h1>
-            <p>Winner</p>
+            <p>Winners</p>
         </div>
     </header>
     
@@ -787,8 +846,9 @@ header p {
                     </li>
                 </ol>
             </div>
-            
-            
+        <!-- Bouton flottant de retour en haut -->
+        <div class="floating-back-to-top" id="float-top-btn">↑</div>            
+         
     </article>
         
         <article id="la-bruyere-giton" class="article">
@@ -935,6 +995,9 @@ header p {
                 <div class="back-to-top">
                     <a href="#table-of-contents" aria-label="Retour au sommaire">↑ Retour au sommaire</a>
                 </div>
+        <!-- Bouton flottant de retour en haut -->
+        <div class="floating-back-to-top" id="float-top-btn">↑</div>
+
             </article>
         
         <article id="montesquieu" class="article">
@@ -1089,6 +1152,9 @@ header p {
                     </li>
                 </ol>
             </div>
+
+        <!-- Bouton flottant de retour en haut -->
+        <div class="floating-back-to-top" id="float-top-btn">↑</div>            
         </article>
         
         <article id="la-bruyere-ville" class="article">
@@ -1209,6 +1275,9 @@ header p {
                     </li>
                 </ol>
             </div>
+
+        <!-- Bouton flottant de retour en haut -->
+        <div class="floating-back-to-top" id="float-top-btn">↑</div>            
 </article>
 <article id="rimbaud-bal-pendus" class="article">
     <div class="breadcrumb">
@@ -1336,6 +1405,9 @@ header p {
     <div class="back-to-top">
         <a href="#table-of-contents" aria-label="Retour au sommaire">↑ Retour au sommaire</a>
     </div>
+
+        <!-- Bouton flottant de retour en haut -->
+        <div class="floating-back-to-top" id="float-top-btn">↑</div>    
 </article>
 <article id="rimbaud-forgeron" class="article">
     <div class="breadcrumb">
@@ -1460,6 +1532,9 @@ header p {
     <div class="back-to-top">
         <a href="#table-of-contents" aria-label="Retour au sommaire">↑ Retour au sommaire</a>
     </div>
+        <!-- Bouton flottant de retour en haut -->
+        <div class="floating-back-to-top" id="float-top-btn">↑</div>
+
 </article>
 <article id="rimbaud-ma-boheme" class="article">
     <div class="breadcrumb">
@@ -1586,6 +1661,9 @@ header p {
     <div class="back-to-top">
         <a href="#table-of-contents" aria-label="Retour au sommaire">↑ Retour au sommaire</a>
     </div>
+
+        <!-- Bouton flottant de retour en haut -->
+        <div class="floating-back-to-top" id="float-top-btn">↑</div>    
 </article>
 <article id="Corneille, Le Menteur2" class="article">
     <div class="breadcrumb">
@@ -1717,6 +1795,9 @@ header p {
             </li>
         </ol>
     </div>
+        <!-- Bouton flottant de retour en haut -->
+        <div class="floating-back-to-top" id="float-top-btn">↑</div>
+
 </article>
 
 <article id="Corneille, Le Menteur3" class="article">
@@ -1865,6 +1946,8 @@ header p {
             </ol>
         </div>
     </div>
+        <!-- Bouton flottant de retour en haut -->
+        <div class="floating-back-to-top" id="float-top-btn">↑</div>    
 
 </article>
 
@@ -2019,7 +2102,12 @@ header p {
             </ol>
         </div>
     </div>
+
+        <!-- Bouton flottant de retour en haut -->
+        <div class="floating-back-to-top" id="float-top-btn">↑</div>    
 </article>
+
+
 </main>
 
 <footer>
@@ -2121,6 +2209,141 @@ header p {
         });
     });
 </script>
+<script>
+            // Gestion du header masqué au scroll
+            let lastScrollTop = 0;
+            const header = document.querySelector('header');
+            const nav = document.getElementById('main-nav');
+            const floatBtn = document.getElementById('float-top-btn');
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > 300) {
+        floatBtn.classList.add('visible');
+    } else {
+        floatBtn.classList.remove('visible');
+    }
+});
+                
+                // Gestion du header
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    // Scroll vers le bas
+                    header.classList.add('hidden');
+                    nav.classList.remove('visible');
+                    nav.classList.add('collapsed');
+                } else {
+                    // Scroll vers le haut
+                    header.classList.remove('hidden');
+                    
+                    if (scrollTop > 150) {
+                        nav.classList.add('visible');
+                        nav.classList.remove('collapsed');
+                    } else {
+                        nav.classList.remove('visible');
+                        nav.classList.add('collapsed');
+                    }
+                }
+                
+                // Affichage du bouton flottant de retour en haut
+                if (scrollTop > 300) {
+                    floatBtn.classList.add('visible');
+                } else {
+                    floatBtn.classList.remove('visible');
+                }
+                
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            
+            // Fonctionnalité du bouton flottant de retour en haut
+            document.addEventListener('DOMContentLoaded', function() {
+    const floatBtn = document.getElementById('float-top-btn');
+    floatBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+});
+
+
+            
+            // Gestion de l'URL à l'ouverture de la page
+            if (window.location.hash) {
+                const targetId = window.location.hash.substring(1);
+                const targetArticle = document.getElementById(targetId);
+                
+                if (targetArticle) {
+                    setTimeout(() => {
+                        // Masquer tous les articles
+                        articles.forEach(article => {
+                            article.classList.remove('active');
+                        });
+                        
+                        // Afficher l'article ciblé
+                        targetArticle.classList.add('active');
+                        
+                        // Faire défiler jusqu'à l'article
+                        targetArticle.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }, 300);
+                }
+            }
+            
+            // Animation des éléments au scroll
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.section, .title-box, #table-of-contents');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect();
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementPosition.top < windowHeight - 100) {
+                        element.classList.add('fade-in');
+                    }
+                });
+            };
+            
+            // Exécution initiale et au scroll
+            animateOnScroll();
+            window.addEventListener('scroll', animateOnScroll);
+            
+            // Détection du mode sombre
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+            
+            if (prefersDarkScheme.matches) {
+                document.body.classList.add('dark-mode');
+            }
+            
+            // Pour les appareils tactiles - amélioration des interactions
+            if ('ontouchstart' in window) {
+                document.body.classList.add('touch-device');
+                
+                // Augmenter la taille des zones cliquables pour les appareils tactiles
+                const clickableElements = document.querySelectorAll('a, button, .category-section h4');
+                
+                clickableElements.forEach(element => {
+                    element.classList.add('touch-target');
+                });
+            }
+            
+            // Gestion des transitions de page fluides
+            document.addEventListener('click', e => {
+                const target = e.target.closest('a');
+                
+                if (target && target.getAttribute('href').startsWith('#')) {
+                    // Animation de transition
+                    const currentView = document.querySelector('.active');
+                    
+                    if (currentView) {
+                        currentView.style.opacity = '0.8';
+                        setTimeout(() => {
+                            currentView.style.opacity = '1';
+                        }, 400);
+                    }
+                }
+            });
+
+    
+
+</script>
+
 
 </body>
 </html>
